@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2019-06-19 16:20:31
+  feeling: MyString
+  race: one
+
+two:
+  date: 2019-06-19 16:20:31
+  feeling: MyString
+  race: two
