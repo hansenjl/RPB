@@ -11,7 +11,13 @@
 
   <body>
 
-    <%= link_to 'Logout', '/logout', method: :delete%>
+    <% if logged_in? %>
+      <%= link_to 'Logout', '/logout', method: :delete%>
+      <%= link_to 'My Races', races_path %>
+      <%= link_to 'Add a Race', new_race_path %>
+    <% else %>
+      <%= link_to 'Log In', login_path %>
+    <% end %>
 
     <%= yield %>
   </body>
