@@ -1,0 +1,10 @@
+<h1>You're Races</h1>
+
+<% @races.each do |race|%>
+  <div>
+    <h3><%= link_to race.title, race_path(race) %> </h3>
+    <p>Type: <%= race.category %> |
+    Distance: <%= race.distance %> miles </p>
+  </div><br>
+<% end %>
+
