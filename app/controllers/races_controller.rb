@@ -15,7 +15,6 @@ class RacesController < ApplicationController
 
   def create
     @race = current_user.races.build(race_params)
-    byebug
     if @race.save
       redirect_to race_path(@race)
     else

@@ -1,5 +1,5 @@
 class Race < ApplicationRecord
   belongs_to :user
-  has_many :sessions
-  has_many :workouts, through: :sessions
+  has_many :trainings
+  has_many :workouts, through: :trainings
 end
