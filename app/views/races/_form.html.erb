@@ -1,1 +1,18 @@
-_form.html.erb
+<%= form_for @race do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br></br>
+
+  <%= f.label :distance, "Distance in Miles:" %>
+  <%= f.number_field :distance, min: 0 %>
+  <br></br>
+
+  <%= f.label :category %>
+  <%= f.select :category,options_for_select(["run", "swim", "bike", "triathalon", "other"]), include_blank: true %>
+
+    <br></br>
+
+  <%= f.submit%>
+
+<% end %>

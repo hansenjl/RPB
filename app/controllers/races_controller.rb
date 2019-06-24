@@ -5,7 +5,7 @@ class RacesController < ApplicationController
   end
 
   def show
-    @race = Race.find_by(params[:id])
+    @race = Race.find_by(id: params[:id])
   end
 
 
@@ -15,6 +15,7 @@ class RacesController < ApplicationController
 
   def create
     @race = current_user.races.build(race_params)
+    byebug
     if @race.save
       redirect_to race_path(@race)
     else
