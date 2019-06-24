@@ -1,1 +1,18 @@
-new.html.erb
+<h1>Add a New Workout</h1>
+<%= form_for @workout do |f| %>
+
+  <%= f.label :category %>
+  <%= f.select :category,options_for_select(["run", "swim", "bike", "walk", "weights", "other"]), include_blank: true  %>
+    <br></br>
+
+  <%= f.label :pace %>
+  <%= f.text_field :pace %>
+  <br></br>
+
+  <%= f.label :distance, "Distance in Miles:" %>
+  <%= f.text_field :distance %>
+    <br></br>
+
+  <%= f.submit%>
+
+<% end %>
