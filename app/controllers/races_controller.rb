@@ -24,9 +24,16 @@ class RacesController < ApplicationController
   end
 
   def edit
+    @race = Race.find_by(id: params[:id])
   end
 
   def update
+    @race = Race.find_by(id: params[:id])
+    if @race.update(race_params)
+      redirect_to race_path(@race)
+    else
+      render :edit
+    end
   end
 
   private
