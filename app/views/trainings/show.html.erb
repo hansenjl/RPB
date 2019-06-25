@@ -1,9 +1,7 @@
-<%= @training.workout.name %>
+<h1>Workout: <%= @training.workout.name %></h1>
 
-
-<%= @training.workout.distance %>
-
-
-<%= @training.workout_id %>
+<h2>Race: <%=@training.race.title%>
+<h3><%= @training.workout.distance %> miles</h3>
+<h3><%= @training.workout.category %> </h3>
 
 <%= @training.feeling %>

@@ -1,1 +1,12 @@
-index.html.erb
+<h1>All Workouts</h1>
+
+<ul>
+<% @workouts.each do |workout| %>
+<li>
+  <strong><%= workout.name %></strong> -
+  <%=workout.distance %> miles  -
+  <%=workout.pace %>
+</li>
+
+<% end %>
+</ul>
