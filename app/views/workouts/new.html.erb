@@ -17,6 +17,23 @@
   <%= f.text_field :distance %>
     <br></br>
 
+
+    <h4>Record a Training Session for this workout:</h4>
+    <%= f.fields_for :trainings do |t|%>
+
+      <%= t.label :race_id %>
+      <%= t.collection_select :race_id, current_user.races, :id, :title    %>
+
+      <%= t.label :date %>
+      <%= t.date_field :date %>
+
+      <%= t.label :feeling %>
+      <%= t.text_field :feeling %>
+
+      <br></br>
+
+
+    <% end %>
   <%= f.submit%>
 
 <% end %>

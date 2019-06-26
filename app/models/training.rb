@@ -2,6 +2,8 @@ class Training < ApplicationRecord
   belongs_to :race
   belongs_to :workout
 
+  validates :date, presence: true
+
 
   #accepts_nested_attributes_for :workout
 

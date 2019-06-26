@@ -3,7 +3,7 @@
 <ul>
 <% @workouts.each do |workout| %>
 <li>
-  <strong><%= workout.name %></strong> -
+  <strong><%= link_to workout.name, workout_path(workout) %></strong> -
   <%=workout.distance %> miles  -
   <%=workout.pace %> - added by: <%= workout.user.username %>
 </li>
