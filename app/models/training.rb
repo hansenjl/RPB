@@ -8,9 +8,8 @@ class Training < ApplicationRecord
   def workout_attributes=(workout_params)
 
     workout = Workout.find_or_create_by(workout_params)
-    if workout.valid?
-      self.workout = workout
-    end
+    workout.valid? ? self.workout = workout : self.workout
+
   end
 
 

@@ -4,11 +4,14 @@ class TrainingsController < ApplicationController
     @training = Training.find(params[:id])
   end
 
+  def index
+    @trainings = current_user.trainings
+  end
+
   def new
     @training = Training.new
     @training.build_workout  #belongs_to
   end
-
 
 
   def create

@@ -1,1 +1,10 @@
-index.html.erb
+<h1>My Training Sessions</h1>
+<ul>
+<% @trainings.each do |t| %>
+  <li>
+    I completed the <%= link_to t.workout.name, workout_path(t.workout)%> while training for the <%= link_to t.race.title, race_path(t.race)%> on <%= t.date%> and felt this way about it: <%= t.feeling%>
+
+  </li><br>
+<% end %>
+
+</ul>
