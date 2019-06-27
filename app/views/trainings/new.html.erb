@@ -1,6 +1,6 @@
 <h1>Record a Training Session</h1>
 
-<%= form_for @training do |f| %>
+<%= form_for [@workout,@training] do |f| %>
 
   <%= f.label :date %>
   <%= f.date_field :date %>
@@ -15,35 +15,38 @@
 
   <br></br>
 
-   <%= f.label :workout_id, "Select a workout:" %>
-  <%= f.collection_select :workout_id, Workout.all, :id, :name, include_blank: true    %>
+  <% if @workout %>
+    <p> Workout: <%= @workout.name%></p>
 
-   <br></br>
+  <% else %>
+    <%= f.label :workout_id, "Select a workout:" %>
+    <%= f.collection_select :workout_id, Workout.all, :id, :name, include_blank: true    %>
 
-   <h3>Or Create a new workout:</h3>
+     <br></br>
 
-  <%= f.fields_for :workout do |w| %>
-    <%= w.label :name %>
-  <%= w.text_field :name %>
+     <h3>Or Create a new workout:</h3>
+
+    <%= f.fields_for :workout do |w| %>
+      <%= w.label :name %>
+    <%= w.text_field :name %>
+      <br></br>
+
+    <%= w.label :category %>
+    <%= w.select :category,options_for_select(["run", "swim", "bike", "walk", "weights", "other"]), include_blank: true  %>
+      <br></br>
+
+    <%= w.label :pace %>
+    <%= w.text_field :pace %>
     <br></br>
 
-  <%= w.label :category %>
-  <%= w.select :category,options_for_select(["run", "swim", "bike", "walk", "weights", "other"]), include_blank: true  %>
-    <br></br>
+    <%= w.label :distance, "Distance in Miles" %>
+    <%= w.text_field :distance %>
+      <br></br>
 
-  <%= w.label :pace %>
-  <%= w.text_field :pace %>
-  <br></br>
+    <%= w.hidden_field :user_id, value: current_user.id %>
+      <br></br>
 
-  <%= w.label :distance, "Distance in Miles" %>
-  <%= w.text_field :distance %>
-    <br></br>
-
-
-  <%= w.hidden_field :user_id, value: current_user.id %>
-    <br></br>
-
-
+    <% end %>
   <% end %>
 
 

@@ -2,6 +2,10 @@ class Training < ApplicationRecord
   belongs_to :race
   belongs_to :workout
 
+  scope :by_workout, -> (workout_id) {where("workout_id = ?", workout_id)}
+
+  validates :date, presence: true
+
 
   #accepts_nested_attributes_for :workout
 

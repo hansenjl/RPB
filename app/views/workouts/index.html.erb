@@ -5,7 +5,10 @@
 <li>
   <strong><%= workout.name %></strong> -
   <%=workout.distance %> miles  -
-  <%=workout.pace %> - added by: <%= workout.user.username %>
+  <%=workout.pace %> - added by: <%= workout.user.username %> |
+  <%= link_to "See all training sessions", workout_trainings_path(workout)%> |
+  <%= link_to "Add a training session", new_workout_training_path(workout)%>
+
 </li>
 
 <% end %>

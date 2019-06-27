@@ -5,18 +5,33 @@ class TrainingsController < ApplicationController
   end
 
   def index
-    @trainings = current_user.trainings
+    #if it's nested
+    if params[:workout_id] && workout = Workout.find_by_id(params[:workout_id])
+      @trainings = workout.trainings
+      # @trainings = current_user.trainings.by_workout(params[:workout_id])
+        #load up only the trainings nested under that workout
+    else
+      #keep with the same old stuff
+      @trainings = Training.all
+    end
   end
 
   def new
-    @training = Training.new
-    @training.build_workout  #belongs_to
+    if params[:workout_id] && @workout = Workout.find_by_id(params[:workout_id])
+      @training = @workout.trainings.build #has_many
+    else
+      @training = Training.new
+      @training.build_workout  #belongs_to - nested form
+    end
   end
 
-
   def create
+     if params[:workout_id] && @workout = Workout.find_by_id(params[:workout_id])
+      @training = @workout.trainings.build(training_params)
+     else
+      @training = Training.new(training_params)
+     end
 
-     @training = Training.new(training_params)
      if @training.save
       redirect_to training_path(@training)
      else
