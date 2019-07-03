@@ -1,6 +1,8 @@
 <h1>Welcome <%=@user.username%></h1>
 
+<ul>
 <% @user.races.distance_search(1).order_alpha_reverse.each do |r| %>
-  <%= r.distance %>
-  <%= r.title %>
+  <li><%= r.distance %></li>
+  <li><%= r.title %></li>
 <% end %>
+</ul>

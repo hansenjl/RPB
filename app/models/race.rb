@@ -23,7 +23,7 @@ class Race < ApplicationRecord
 
   def not_a_duplicate
     #instance method
-    if Race.find_by(title: title, distance: distance, category: category)
+    if Race.find_by(title: title, distance: distance, category: category, user_id: user_id)
       errors.add("race", "has already been used - this race has already been created")
     end
   end

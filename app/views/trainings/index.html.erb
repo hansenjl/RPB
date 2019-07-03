@@ -1,10 +1,25 @@
-<h1>My Training Sessions</h1>
+<% if @workout %>
+  <h1>Training Sessions for the <%= @workout.name %> workout</h1>
+<% elsif @race %>
+  <h1>Training Sessions for the <%= @race.title %> race</h1>
+<% else %>
+  <h1>All Training Sessions</h1>
+<% end %>
+
+
 <ul>
-<% @trainings.each do |t| %>
+<% @trainings.order(:date).each do |t| %>
   <li>
-    I completed the <%= link_to t.workout.name, workout_path(t.workout)%> while training for the <%= link_to t.race.title, race_path(t.race)%> on <%= t.date%> and felt this way about it: <%= t.feeling%>
+    <%= t.race.try(:user).try(:username) %> completed the
+    <%= link_to t.workout.name, workout_path(t.workout)%>
+    while training for the <%= link_to t.race.title, race_path(t.race)%>
+    <% if t.date %>
+    on <%= t.date.strftime("%A, %b %d")%>
+    <% end %>
+    <% if !t.feeling.empty? %>
+    and felt: <%= t.feeling%>
+    <% end %>
 
   </li><br>
 <% end %>
-
 </ul>

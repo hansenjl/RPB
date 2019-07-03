@@ -6,10 +6,12 @@ class TrainingsController < ApplicationController
 
   def index
     #if it's nested
-    if params[:workout_id] && workout = Workout.find_by_id(params[:workout_id])
-      @trainings = workout.trainings
+    if params[:workout_id] && @workout = Workout.find_by_id(params[:workout_id])
+      @trainings = @workout.trainings
       # @trainings = current_user.trainings.by_workout(params[:workout_id])
         #load up only the trainings nested under that workout
+    elsif params[:race_id] && @race = Race.find_by_id(params[:race_id])
+      @trainings = @race.trainings
     else
       #keep with the same old stuff
       @trainings = Training.all
