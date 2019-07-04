@@ -16,4 +16,13 @@ class Training < ApplicationRecord
     workout_params[:name].empty? ? self.workout : self.workout = workout
   end
 
+  def datetime
+    self.date.strftime("%A, %b %d") if self.date
+    #self.date.try(:strftime, "%A, %b %d")
+  end
+
+  def username
+    @username ||= self.race.try(:user).try(:username)
+  end
+
 end

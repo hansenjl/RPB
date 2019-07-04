@@ -1,11 +1,11 @@
 class WorkoutsController < ApplicationController
+  before_action :set_workout, only: [:show]
 
   def index
     @workouts = Workout.order_by_popularity
   end
 
   def show
-    @workout = Workout.find(params[:id])
   end
 
   def new
@@ -26,4 +26,10 @@ class WorkoutsController < ApplicationController
    def workout_params
     params.require(:workout).permit(:pace, :distance, :name, :category)
    end
+
+   def set_workout
+      @workout = Workout.find_by(id: params[:id])
+      redirect_to workouts_path if !@workout
+   end
+
 end
