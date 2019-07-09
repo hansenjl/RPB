@@ -5,6 +5,8 @@
 
   <%= link_to "Sign Up", signup_path  %>
 
+  <%= link_to "Log In with Google", "/auth/google_oauth2" %>
+
 <% else %>
 
   <h2>Welcome <%= current_user.username%> </h2>

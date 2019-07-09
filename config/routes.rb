@@ -5,8 +5,12 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
-   get '/signup' => 'users#new'
+  get '/signup' => 'users#new'
   post '/signup' => 'users#create'
+
+  get '/auth/:provider/callback' => 'sessions#oauth_login'
+
+
 
 
 

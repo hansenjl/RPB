@@ -12,17 +12,20 @@
   <body>
 
     <% if logged_in? %>
-      <%= link_to 'Logout', '/logout', method: :delete%>
-      <%= link_to 'My Races', races_path %>
-      <%= link_to 'Add a Race', new_race_path %>
-      <%= link_to 'Add a Workout', new_workout_path %>
-      <%= link_to 'All Workouts', workouts_path %>
-      <%= link_to 'Add a Training Session', new_training_path %>
-      <%= link_to 'My Training Sessions', trainings_path %>
+    <nav class='navbar'>
+      <%= link_to 'Logout', '/logout', method: :delete, class:'button'%>
+      <%= link_to 'My Races', races_path , class:'button'%>
+      <%= link_to 'Add a Race', new_race_path , class:'button'%>
+      <%= link_to 'Add a Workout', new_workout_path , class:'button'%>
+      <%= link_to 'All Workouts', workouts_path, class:'button' %>
+      <%= link_to 'Add a Training Session', new_training_path, class:'button' %>
+      <%= link_to 'My Training Sessions', trainings_path, class:'button' %>
+    </nav>
     <% else %>
       <%= link_to 'Log In', login_path %>
     <% end %>
-
+    <div class='container'>
     <%= yield %>
+    </div>
   </body>
 </html>
