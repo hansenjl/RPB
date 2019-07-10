@@ -1,0 +1,8 @@
+<h1>All Users</h1>
+<ul>
+<% @users.each do |u| %>
+  <li>
+    <%= link_to u.username, user_path(u) %> - training for <%= u.races.size %> races
+  </li><br>
+<% end %>
+</ul>

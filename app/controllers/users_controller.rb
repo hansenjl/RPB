@@ -20,6 +20,16 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
+  def index
+    @users = User.all
+  end
+
+  def message
+    @reciever = User.find_by(id: params[:id])
+    @message = params[:content]
+    redirect_to users_path
+  end
+
   private
 
   def user_params

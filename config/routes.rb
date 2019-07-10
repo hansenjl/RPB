@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback' => 'sessions#oauth_login'
 
+  post '/users/:id/message' => 'users#message'
 
 
 
