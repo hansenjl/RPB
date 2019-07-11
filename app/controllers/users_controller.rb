@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.valid?
       @user.save
+      #send a welcome email
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
@@ -25,8 +26,13 @@ class UsersController < ApplicationController
   end
 
   def message
-    @reciever = User.find_by(id: params[:id])
+    @receiver = User.find_by(id: params[:id])
+    @sender = current_user
     @message = params[:content]
+
+    #send an email
+    NotificationMailer.training_invite(@receiver, @sender, @message).deliver_now
+
     redirect_to users_path
   end
 
